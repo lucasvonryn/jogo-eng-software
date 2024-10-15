@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo Cultural Interativo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+    #map {
+      width: 600px;
+      height: 400px;
+      margin: 20px auto;
+      background-image: url('mapa.jpg'); /* Coloque o caminho da imagem do mapa aqui */
+      background-size: cover;
+      position: relative;
+    }
+    .region {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: rgba(255, 0, 0, 0.5); /* Áreas clicáveis, transparência */
+      cursor: pointer;
+    }
+    #challenge {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Jogo de Exploração Cultural</h1>
+<p>Clique em uma região do mapa para iniciar o desafio!</p>
+
+<div id="map">
+  <!-- Defina áreas interativas no mapa -->
+  <div id="region1" class="region" style="top: 50px; left: 100px;"></div>
+  <div id="region2" class="region" style="top: 150px; left: 300px;"></div>
+  <div id="region3" class="region" style="top: 250px; left: 200px;"></div>
+</div>
+
+<div id="challenge">
+  <h2>Desafio Cultural</h2>
+  <p id="challenge-text"></p>
+  <button onclick="completeChallenge()">Concluir Desafio</button>
+</div>
+
+<script>
+  // Função para iniciar o desafio ao clicar em uma região
+  function startChallenge(region) {
+    const challenge = document.getElementById('challenge');
+    const challengeText = document.getElementById('challenge-text');
+    
+    if (region === 'region1') {
+      challengeText.textContent = 'Bem-vindo à África! Qual destes instrumentos é tradicional na cultura africana?';
+    } else if (region === 'region2') {
+      challengeText.textContent = 'Bem-vindo à Europa! Quem foi um importante pintor do Renascimento Europeu?';
+    } else if (region === 'region3') {
+      challengeText.textContent = 'Bem-vindo à Ásia! Qual é a principal dança tradicional do Japão?';
+    }
+    
+    challenge.style.display = 'block';
+  }
+
+  // Adiciona evento de clique para cada região
+  document.getElementById('region1').addEventListener('click', function() {
+    startChallenge('region1');
+  });
+
+  document.getElementById('region2').addEventListener('click', function() {
+    startChallenge('region2');
+  });
+
+  document.getElementById('region3').addEventListener('click', function() {
+    startChallenge('region3');
+  });
+
+  // Função para concluir o desafio
+  function completeChallenge() {
+    alert('Desafio concluído!');
+    document.getElementById('challenge').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
